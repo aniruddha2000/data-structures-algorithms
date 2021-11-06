@@ -1,10 +1,10 @@
 class Knapsack:
-    def __init__(self):
-        self.knapsack_capacity = 20
+    def __init__(self, profit, weight, knapsack_capacity):
+        self.profit = profit
+        self.weight = weight
+        self.knapsack_capacity = knapsack_capacity
         self.current_knapsack = 0
         self.current_profit = 0
-        self.profit = [25, 24, 15]
-        self.weight = [18, 15, 10]
         self.profit_per_weight = []
 
     def solve(self):
@@ -35,5 +35,13 @@ class Knapsack:
         return self.knapsack_capacity - self.current_knapsack
 
 
-knapsack = Knapsack()
+# profit1 = [25, 24, 15]
+# weight1 = [18, 15, 10]
+# knapsack_capacity1 = 20
+# knapsack = Knapsack(profit1, weight1, knapsack_capacity1)
+# print(knapsack.solve())
+profit2 = [10, 5, 15, 7, 6, 18, 3]
+weight2 = [2, 3, 5, 7, 1, 4, 1]
+knapsack_capacity2 = 15
+knapsack = Knapsack(profit2, weight2, knapsack_capacity2)
 print(knapsack.solve())
