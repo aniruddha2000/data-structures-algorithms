@@ -48,23 +48,29 @@ class HuffManCoding:
             nodes.append((newNode, val1 + val2))
             nodes = sorted(nodes, key=lambda x: x[1])
         huffmanCode = self.HuffManCodingTree(nodes[0][0])
-        return huffmanCode, sorted_freq
+        return huffmanCode, sorted_freq, nodes[0][0]
 
     def printCodedStringTable(self) -> None:
-        huffManCode, freq = self.createTree()
+        huffManCode, freq, _ = self.createTree()
         for (char, frequency) in freq:
             print(" %-4r |%12s" % (char, huffManCode[char]))
 
     def printCodedString(self) -> None:
-        huffManCode, _ = self.createTree()
+        huffManCode, _, _ = self.createTree()
         print("Original Messege: ")
         print(self.msg)
         print("Encoded String: ")
         for s in self.msg:
             print(huffManCode[s], end="")
+        print()
+
+    def getTreeHead(self):
+        _, _, treeHead = self.createTree()
+        return treeHead
 
 
 testCase1 = "BCAADDDCCACACAC"
 decode = HuffManCoding(testCase1)
 decode.printCodedStringTable()
 decode.printCodedString()
+testCase1_TreeHead = decode.getTreeHead()
